@@ -9,12 +9,10 @@
   flex-flow: row wrap;
   width: 500px;
   height: 500px;
-  align-content:flex-start;
+  align-content: flex-start;
   border: red solid 2px;
 }
 
 .gridBox div {
-  flex-basis:6.25%;
-  height: 6.25%;
   border: solid black 1px;
 }

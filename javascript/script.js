@@ -6,5 +6,7 @@ const gridArea = gridRows * gridColumns;
 
 for (let i = 0; i < gridArea; i++) {
     const square = document.createElement("div");
+    square.style.flexBasis = `${(100/gridRows)}%`
+    square.style.height = `${(100/gridColumns)}%`
     gridBox.appendChild(square);
 }
