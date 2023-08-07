@@ -15,9 +15,10 @@
   padding: 10px 0;
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
-.gridSize {
+.buttons button {
   padding: 15px 10px;
   font-size: 1.25rem;
   font-weight: bold;
@@ -39,6 +40,6 @@
   border: solid black 0.1px;
 }
 
-.changeColor {
-  background-color: orange;
+.black {
+  background-color: black;
 }

@@ -1,6 +1,10 @@
 const gridBox = document.querySelector(".gridBox");
-let gridRows = 16;
-let gridColumns = 16;
+
+// buttons
+const gridSizeBtn = document.querySelector(".gridSize");
+const randomFillBtn = document.querySelector(".randomFill");
+
+let gridRows = 16, gridColumns = 16;
 createGrid(gridRows * gridColumns);
 colorOnHover();
 
@@ -13,8 +17,8 @@ function createGrid(gridSize) {
     }
 }
 
-const gridSizeBtn = document.querySelector(".gridSize")
 gridSizeBtn.addEventListener("click", changeGridSize);
+randomFillBtn.addEventListener("click", event => event.target.classList.toggle("on"));
 
 function changeGridSize() {
     gridRows = prompt("What width do you want for the grid?");
@@ -27,9 +31,20 @@ function changeGridSize() {
 
 function colorOnHover() {
     const squares = document.querySelectorAll(".gridBox div");
-    squares.forEach(square => square.addEventListener("mouseover", changeColor));
 
-    function changeColor() {
-        this.classList.add("changeColor");
+    squares.forEach(function(square) {
+        square.addEventListener("mouseover", event => changeColor(event));
+    });
+
+    function changeColor(event) {
+        let color = "black";
+        if (randomFillBtn.classList.contains("on")) color = randomColor();
+
+        event.target.style.backgroundColor = color;
     }
+}
+
+function randomColor() {
+    function randNum() {return Math.floor(Math.random() * 256);}
+    return (`rgb(${randNum()}, ${randNum()}, ${randNum()})`);
 }
