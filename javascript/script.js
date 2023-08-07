@@ -10,3 +10,10 @@ for (let i = 0; i < gridArea; i++) {
     square.style.height = `${(100/gridColumns)}%`
     gridBox.appendChild(square);
 }
+
+const squares = document.querySelectorAll(".gridBox div");
+squares.forEach(square => square.addEventListener("mouseover", colorChange));
+
+function colorChange(event) {
+    this.classList.add("colorChange");
+}
