@@ -1,19 +1,19 @@
-const body = document.querySelector("body");
 const gridBox = document.querySelector(".gridBox");
-const gridRows = 16;
-const gridColumns = 16;
-const gridArea = gridRows * gridColumns;
+let gridRows = 16;
+let gridColumns = 16;
+createGrid(gridRows * gridColumns);
 
-for (let i = 0; i < gridArea; i++) {
-    const square = document.createElement("div");
-    square.style.flexBasis = `${(100/gridRows)}%`
-    square.style.height = `${(100/gridColumns)}%`
-    gridBox.appendChild(square);
-}
+function createGrid(gridSize) {
+    for (let i = 0; i < gridSize; i++) {
+        const square = document.createElement("div");
+        square.style.flexBasis = `${(100/gridRows)}%`
+        square.style.height = `${(100/gridColumns)}%`
+        gridBox.appendChild(square);
+}}
 
 const squares = document.querySelectorAll(".gridBox div");
-squares.forEach(square => square.addEventListener("mouseover", colorChange));
+squares.forEach(square => square.addEventListener("mouseover", changeColor));
 
-function colorChange(event) {
-    this.classList.add("colorChange");
+function changeColor() {
+    this.classList.add("changeColor");
 }
