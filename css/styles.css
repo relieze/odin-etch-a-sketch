@@ -13,7 +13,7 @@
   border: red solid 2px;
 }
 
-.gridBox square {
+.gridBox div {
   flex-basis:6.25%;
   height: 6.25%;
   border: solid black 1px;

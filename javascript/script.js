@@ -1,10 +1,10 @@
 const body = document.querySelector("body");
 const gridBox = document.querySelector(".gridBox");
-const rows = 16;
-const columns = 16;
+const gridColumns = 16;
+const gridRows = 16;
+const gridArea = gridRows * gridColumns;
 
-for (let i = 0; i < rows; i++) {
-  for (let e = 0; e < columns; e++) {
+for (let i = 0; i < gridArea; i++) {
     const square = document.createElement("div");
-  }
+    gridBox.appendChild(square);
 }
