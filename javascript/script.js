@@ -11,6 +11,18 @@ function createGrid(gridSize) {
         gridBox.appendChild(square);
 }}
 
+
+const gridSizeBtn = document.querySelector(".gridSize")
+gridSizeBtn.addEventListener("click", changeGridSize);
+
+function changeGridSize() {
+    gridRows = prompt("What width do you want for the grid?");
+    gridColumns = prompt("What height do you want for the grid?");
+    
+    while (gridBox.firstChild) gridBox.removeChild(gridBox.firstChild);
+    createGrid(gridRows * gridColumns);
+}
+
 const squares = document.querySelectorAll(".gridBox div");
 squares.forEach(square => square.addEventListener("mouseover", changeColor));
 
