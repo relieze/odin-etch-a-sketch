@@ -16,14 +16,16 @@ function createGrid(gridSize) {
         const square = document.createElement("div");
         square.style.flexBasis = `${(100/gridRows)}%`
         square.style.height = `${(100/gridColumns)}%`
+        square.dataset.color = "hsl(000, 000%, 100%)";
+        square.style.backgroundColor = square.dataset.color;
         gridBox.appendChild(square);
     }
 }
 
 gridSizeBtn.addEventListener("click", changeGridSize);
 
-buttons.forEach(function(btn) {
-    btn.addEventListener("click", event => clearOtherButtons(event.target));
+buttons.forEach((btn) => {
+    btn.addEventListener("click", () => clearOtherButtons(btn));
 })
 
 function clearOtherButtons(target) {
@@ -45,20 +47,35 @@ function changeGridSize() {
 function handleHover() {
     const squares = document.querySelectorAll(".gridBox div");
 
-    squares.forEach(function(square) {
-        square.addEventListener("mouseover", event => changeColor(event));
+    squares.forEach((square) => {
+        square.addEventListener("mouseover", () => changeColor(square));
     });
 }
 
-function changeColor(event) {
-    let color = "hsl(0, 0%, 0%)";
+function changeColor(square) {
+    let color = "hsl(000, 000%, 000%)";
     if (randomFillBtn.classList.contains("on")) color = randomColor();
-    event.target.dataset.color = color;
+    color = shadeEffect(square, color);
+    square.dataset.color = color;
 
-    event.target.style.backgroundColor = color;
+    square.style.backgroundColor = color;
 }
 
 function randomColor() {
-    function randNum(max) {return Math.floor(Math.random() * max);}
-    return `hsl(${randNum(360)}, ${randNum(31) + 70}%, ${randNum(71) + 15}%)`;    
+    function randNum(max, add = 0) {
+        return `${Math.floor(Math.random() * max) + add}`.padStart(3, "0");
+    }
+    return `hsl(${randNum(360)}, ${randNum(31, 70)}%, ${randNum(71, 15)}%)`;    
+}
+
+function shadeEffect(square, color) {
+    if (lightShadeBtn.classList.contains("on")) {
+        color = square.dataset.color;
+        color = color.slice(0, 15) + `${parseInt(color.slice(15,18)) + 10}`.padStart(3, 0) + color.slice(18);
+    } else if (darkShadeBtn.classList.contains("on")) {
+        color = square.dataset.color;
+        color = color.slice(0, 15) + `${parseInt(color.slice(15,18)) - 10}`.padStart(3, 0) + color.slice(18);
+    }
+        
+    return color;
 }
