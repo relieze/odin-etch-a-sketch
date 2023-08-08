@@ -53,6 +53,7 @@ function handleHover() {
 function changeColor(event) {
     let color = "hsl(0, 0%, 0%)";
     if (randomFillBtn.classList.contains("on")) color = randomColor();
+    event.target.dataset.color = color;
 
     event.target.style.backgroundColor = color;
 }
