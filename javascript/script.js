@@ -71,11 +71,14 @@ function randomColor() {
 function shadeEffect(square, color) {
     if (lightShadeBtn.classList.contains("on")) {
         color = square.dataset.color;
-        color = color.slice(0, 15) + `${parseInt(color.slice(15,18)) + 10}`.padStart(3, 0) + color.slice(18);
+        let lightnessValue = parseInt(color.slice(15,18));
+        if (lightnessValue < 100) lightnessValue += 10;
+        color = color.slice(0, 15) + `${lightnessValue}`.padStart(3, "0") + color.slice(18);
     } else if (darkShadeBtn.classList.contains("on")) {
         color = square.dataset.color;
-        color = color.slice(0, 15) + `${parseInt(color.slice(15,18)) - 10}`.padStart(3, 0) + color.slice(18);
+        let darknessValue = parseInt(color.slice(15,18));
+        if (darknessValue > 0) darknessValue -= 10;
+        color = color.slice(0, 15) + `${darknessValue}`.padStart(3, "0") + color.slice(18);
     }
-        
     return color;
 }
