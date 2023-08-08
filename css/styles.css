@@ -5,15 +5,20 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+h1 {
+  width: fit-content;
+  margin: 40px auto;
+}
+
 .playGround {
-  margin-top: 40px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 70px;
 }
 
 .buttons {
   width: 150px;
-  padding: 10px 0;
+  align-self: center;
   display: flex;
   flex-direction: column;
   gap: 20px;
