@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .playGround {
@@ -19,12 +20,27 @@
 }
 
 .buttons button {
-  padding: 15px 10px;
+  padding: 15px;
   font-size: 1.25rem;
   font-weight: bold;
-  background-color: rgb(78, 205, 247);
+  background-color: rgb(255, 133, 85);
   border: none;
   border-radius: 15px;
+}
+
+.buttons .shading{
+  display: flex;
+  flex-direction : column;
+  padding: 10px;
+  gap: 5px;
+  border: solid red 3px;
+  border-radius: 15px;
+  font-size: 1.25rem;
+  align-items: center;
+}
+
+.shading button{
+  width: 125px;
 }
 
 .gridBox {
